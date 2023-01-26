@@ -21,6 +21,7 @@ mysqli_query($con, "SET CHARACTER SET UTF8");
 
 <body>
     <header>PRAGUE-AIRPORT</header>
+    <script src="script.js"></script>
     <?php include 'table.php';?>
 </body>
 
