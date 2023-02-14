@@ -4,3 +4,5 @@ Tabule na letišti
 CSS responzibilita
 Refreshovani tabulky
 uprava dat
+uprava sql kodu
+zruseni gate table 
