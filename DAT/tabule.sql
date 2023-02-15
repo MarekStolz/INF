@@ -15,9 +15,9 @@ DROP TABLE IF EXISTS flight;
 CREATE TABLE IF NOT EXISTS flight (
   id int UNSIGNED NOT NULL AUTO_INCREMENT,
   code varchar(10) NOT NULL,
-  from_dttm timestamp NOT NULL,
+  from_dttm timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   from_airport_code varchar(5) NOT NULL,
-  to_dttm timestamp NOT NULL,
+  to_dttm timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   to_airport_code varchar(5) NOT NULL,
   gate_code varchar(3) NOT NULL,
   PRIMARY KEY (id),

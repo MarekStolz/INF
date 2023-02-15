@@ -6,4 +6,5 @@ if ($con === false) {
 mb_internal_encoding('UTF-8');
 mysqli_query($con, "SET CHARACTER SET UTF8");
 
+
 ?>

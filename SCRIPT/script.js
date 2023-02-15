@@ -4,7 +4,7 @@ setInterval(function(){
 
 function refreshData() {
     $.ajax({
-        url: 'table.php',
+        url: '../INF/APP/table.php',
         success: function(data) {
             //update the table with the new data
         }
