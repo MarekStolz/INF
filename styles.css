@@ -11,7 +11,7 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
-header {
+header, .cas {
   font-family: 'Black Ops One', cursive;
   display: flex;
   justify-content: flex;
@@ -30,12 +30,13 @@ table {
   border-collapse: collapse;
   width: 100%;
   font-weight: bold;
-  height: 95%;
+  font-size: large;
+  height: 90%;
 }
 
 th,
 td {
-  padding: 5px;
+  padding: 10px;
   justify-content: center;
 }
 @media screen and (max-width: 1300px), (max-height: 600px)  {
@@ -44,8 +45,7 @@ td {
   }
   table {
     border-collapse: collapse;
-    width: 98%;
-    height: 95%;
+    height: 90%;
   }
 }
 @media screen and (max-width: 915px)  {
@@ -53,7 +53,6 @@ td {
     font-size: large;
   }
   table {
-    width: 98%;
     height: 90%;
   }
 }
