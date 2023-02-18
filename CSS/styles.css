@@ -11,15 +11,18 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
-header, .cas {
+header{
   font-family: 'Black Ops One', cursive;
   display: flex;
   justify-content: flex;
   justify-content: center;
-  font-size: x-large;
+  font-size: xx-large;
   padding-bottom: 5px;
   font-weight: bold;
   }
+.cas {
+  margin-left: 20%;
+}
 table,
 td,
 th {
@@ -41,7 +44,7 @@ td {
 }
 @media screen and (max-width: 1300px), (max-height: 600px)  {
   header {
-    font-size: large;
+    font-size: x-large;
   }
   table {
     border-collapse: collapse;
@@ -50,7 +53,7 @@ td {
 }
 @media screen and (max-width: 915px)  {
   header {
-    font-size: large;
+    font-size: x-large;
   }
   table {
     height: 90%;
@@ -58,7 +61,7 @@ td {
 }
 @media screen and (max-height: 500px)  {
   header {
-    font-size:medium;
+    font-size:large;
   }
   table {
     height: 90%;
