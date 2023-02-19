@@ -1,12 +1,21 @@
-setInterval(function(){
-    refreshData();
-}, 30000); //30 seconds
-
-function refreshData() {
+function checkForUpdates() {
     $.ajax({
-        url: '../INF/APP/table.php',
-        success: function(data) {
-            //update the table with the new data
+      url: '../INF/APP/table.php',
+      type: 'GET',
+      success: function(response) {
+        if (response === '1') {
+          location.reload();
         }
+      },
+      complete: function() {
+        // spustit opět každých 30 sekund
+        setTimeout(checkForUpdates, 3000);
+      }
     });
-}
+  }
+  
+  // spustit po načtení stránky
+  $(document).ready(function() {
+    setTimeout(checkForUpdates, 3000);
+  });
+  
