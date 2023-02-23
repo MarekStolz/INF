@@ -20,14 +20,20 @@ echo '<th>LET</th>
 <th>STATUS</th>'
 . PHP_EOL;
 
-$row_count = 0; // nastavení počáteční hodnoty pro počítání řádků
+$row_count = 0; 
 while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
     $row_count++;
-    // použití ternárního operátoru pro určení třídy řádku
+   
     $row_class = $row_count % 2 == 0 ? 'even' : 'odd';
     
-    // přiřazení barvy písma podle hodnoty v 'status'
+    
     $status_color = '';
+    $status_text = $airport['status'];
+    if ($status_text === 'DELAYED') {
+        $from_time = strtotime($airport['from_dttm']);
+        $delayed_time = strtotime('+5 minutes', $from_time);
+        $status_text .= ' (' . date('H:i', $delayed_time) . ')';
+    }
     switch($airport['status']) {
         case 'CANCELED':
             $status_color = 'red';
@@ -44,7 +50,7 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
      '</td><td>' . date('H:i', strtotime($airport['from_dttm'])) .
       '</td><td>' . date('H:i', strtotime($airport['to_dttm'])) .
        '</td><td>' . $airport['gate_code'] .
-        '</td><td style="color: ' . $status_color . ';">' . $airport['status'] .
+        '</td><td style="color: ' . $status_color . ';">' . $status_text .
          '</td></tr>' . PHP_EOL;
 }
 
