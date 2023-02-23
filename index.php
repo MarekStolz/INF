@@ -17,11 +17,29 @@ require '../INF/APP/login.php';
     <header>
         AIRPORT
         <div id="cas" class="cas"></div>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                $.ajax({
+                    url: "../INF/APP/table.php", // zde je potřeba uvést cestu k PHP skriptu, který vrací aktualizovanou tabulku
+                    cache: false,
+                    success: function(data) {
+                        $('#flight-table').html(
+                            data); // nahrazení obsahu tabulky novými daty
+                    }
+                });
+            }, 3000); // interval aktualizace v milisekundách
+        });
+        </script>
     </header>
     <script src="../INF/SCRIPT/time.js"></script>
     <script src="../INF/SCRIPT/script.js"></script>
-    <?php include '../INF/APP/table.php'; ?>
+    <div id="flight-table">
+        <?php include '../INF/APP/table.php'; 
+    require '../INF/APP/login.php';
+    ?>
+    </div>
 </body>
 
 </html>
