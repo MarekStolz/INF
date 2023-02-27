@@ -7,6 +7,8 @@ mb_internal_encoding('UTF-8');
 mysqli_query($con, "SET CHARACTER SET UTF8");
 
 $current_time = date('Y-m-d H:i:s');
+date_default_timezone_set('Europe/Prague');
+
 
 $q = "SELECT * FROM flight WHERE from_dttm > '$current_time' ORDER BY from_dttm LIMIT 8";
 $result = mysqli_query($con, $q);
