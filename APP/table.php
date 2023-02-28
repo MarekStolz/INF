@@ -15,10 +15,9 @@ $result = mysqli_query($con, $q);
 
 echo '<table>' . PHP_EOL;
 echo '<th>LET</th>
-<th>DESTINACE</th>
-<th>ODLET</th>
-<th>PRILET</th>
-<th>BRANA</th>
+<th>TO</th>
+<th>DEPARTURE</th>
+<th>GATE</th>
 <th>STATUS</th>'
 . PHP_EOL;
 
@@ -30,26 +29,37 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
     
     
     $status_color = '';
-switch($airport['status']) {
-    case 'CANCELED':
-        $status_color = 'red';
-        break;
-    case 'DELAYED':
-        $status_color = 'orange';
-        // přičíst 5 minut k from_dttm, pokud je let zpožděn
-        $airport['from_dttm'] = date('Y-m-d H:i:s', strtotime($airport['from_dttm'] . ' +5 minutes'));
-        break;
-    default:
-        $status_color = 'green';
-}
+    switch($airport['status']) {
+        case 'CANCELED':
+            $status_color = 'red';
+            break;
+        case 'DELAYED':
+            $status_color = 'orange';
+            break;
+        default:
+            $status_color = 'green';
+    }
+    
 
-echo '<tr class="' . $row_class . '"><td>' . $airport['code'] .
-'</td></td><td>' . $airport['destination'] .
- '</td><td>' . date('H:i', strtotime($airport['from_dttm'])) .
-  '</td><td>' . date('H:i', strtotime($airport['to_dttm'])) .
-   '</td><td>' . $airport['gate_code'] .
-    '</td><td style="color: ' . $status_color . ';">' . $airport['status'] .
-     '</td></tr>' . PHP_EOL;}
+    $from_dttm = $airport['from_dttm'];
+    if ($airport['ifdelayed'] != 0) {
+        $from_dttm = date('Y-m-d H:i:s', strtotime($airport['from_dttm'] . ' + ' . $airport['ifdelayed'] . ' minutes'));
+    }
+
+    $from_dttm_color = $status_color == 'orange' ? 'orange' : 'white';
+
+    echo '<tr class="' . $row_class . '"><td>' . $airport['code'] .
+        '</td></td><td>' . $airport['destination'] .
+        '</td><td style="color: ' . $from_dttm_color . ';">' . date('H:i', strtotime($from_dttm)) .
+        '</td><td>' . $airport['gate_code'] .
+        '</td><td style="color: ' . $status_color . ';">' . $airport['status'];
+    
+    if ($airport['status'] == 'DELAYED' && $airport['ifdelayed'] != 0) {
+        echo ' for ' . $airport['ifdelayed'] . ' minutes';
+    }
+    
+    echo '</td></tr>' . PHP_EOL;
+}
 
 if ($row_count === 0) {
     echo '<tr><td colspan="6">Žádné lety nejsou naplánovány v budoucnu.</td></tr>';

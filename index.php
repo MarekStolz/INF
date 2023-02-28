@@ -10,12 +10,12 @@ require '../INF/APP/login.php';
     <meta name="author" content="Marek Štolz">
     <meta name="description" content="Information table for airport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link id="link-style" rel="stylesheet" href="../INF/CSS/styles.css" />
+    <link id="link-style" rel="stylesheet" href="../INF/CSS/stylesd.css" />
 </head>
 
 <body>
     <header>
-        AIRPORT
+      <div class="nadpis">AIRPORT</div>
         <div id="cas" class="cas"></div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
@@ -40,6 +40,7 @@ require '../INF/APP/login.php';
     require '../INF/APP/login.php';
     ?>
     </div>
+   
 </body>
 
 </html>
