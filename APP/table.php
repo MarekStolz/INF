@@ -13,11 +13,11 @@ echo '<th>LET</th>
 . PHP_EOL;
 
 $row_count = 0; 
+$previous_date = null;
 while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
     $row_count++;
    
     $row_class = $row_count % 2 == 0 ? 'even' : 'odd';
-    
     
     $status_color = '';
     switch($airport['status']) {
@@ -31,10 +31,21 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
             $status_color = 'green';
     }
     
-
-    $from_dttm = $airport['from_dttm'];
-    if ($airport['ifdelayed'] != 0) {
-        $from_dttm = date('Y-m-d H:i:s', strtotime($airport['from_dttm'] . ' + ' . $airport['ifdelayed'] . ' minutes'));
+    // Check if the date has changed
+    if ($airport['from_dttm'] !== $previous_date) {
+        $previous_date = $airport['from_dttm'];
+        
+        // Check if delayed and add delay to the date
+        if ($airport['ifdelayed'] != 0) {
+            $delay_in_minutes = $airport['ifdelayed'];
+            $delay_in_seconds = $delay_in_minutes * 60;
+            $delayed_timestamp = strtotime($airport['from_dttm']) + $delay_in_seconds;
+            $from_dttm = date('Y-m-d H:i:s', $delayed_timestamp);
+        } else {
+            $from_dttm = $airport['from_dttm'];
+        }
+    } else {
+        $from_dttm = '';
     }
 
     $from_dttm_color = $status_color == 'orange' ? 'orange' : 'white';
@@ -51,6 +62,8 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
     
     echo '</td></tr>' . PHP_EOL;
 }
+
+
 
 if ($row_count === 0) {
     echo '<tr><td colspan="6">Žádné lety nejsou naplánovány v budoucnu.</td></tr>';
