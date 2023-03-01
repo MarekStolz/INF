@@ -34,13 +34,14 @@ th {
   border: 2px solid #ddd;
   text-align: left;
   font-size: 3rem;
+  padding-left: 1rem;
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 5rem;
   padding-bottom: 500px;
   height: 50vmin;
   max-height: 90vh;

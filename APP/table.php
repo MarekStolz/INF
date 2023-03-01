@@ -5,7 +5,7 @@ $q = "SELECT * FROM flight WHERE from_dttm > '$current_time' ORDER BY from_dttm 
 $result = mysqli_query($con, $q);
 
 echo '<table>' . PHP_EOL;
-echo '<th>LET</th>
+echo '<th>FLIGHT</th>
 <th>TO</th>
 <th>DEPARTURE</th>
 <th>GATE</th>
@@ -28,7 +28,7 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
             $status_color = 'orange';
             break;
         default:
-            $status_color = 'green';
+            $status_color = 'white';
     }
     
     // Check if the date has changed
