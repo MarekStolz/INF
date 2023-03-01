@@ -1,7 +1,7 @@
 <?php
 require 'login.php';
 
-$q = "SELECT * FROM flight WHERE from_dttm > '$current_time' ORDER BY from_dttm LIMIT 8";
+$q = "SELECT * FROM flight WHERE from_dttm > '$current_time' ORDER BY from_dttm LIMIT 10";
 $result = mysqli_query($con, $q);
 
 echo '<table>' . PHP_EOL;

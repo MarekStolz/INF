@@ -23,11 +23,13 @@ header{
   padding-bottom: 5px;
   font-weight: bold;
 }
-
+.nadpis{
+  
+}
 .cas {
   padding-top: 1rem;
   font-size: 3rem;
-  margin-left: 20%;
+  margin-left: 3rem;
 }
 
 td,
@@ -42,12 +44,15 @@ table {
   width: 100%;
   font-weight: bold;
   font-size: 3rem;
-  height: 89vh;
   padding-bottom: 500px;
+  height: 50vmin;
+  max-height: 90vh;
+  min-height: 88vh;
+  overflow-y: auto;
 }
 
 table tr.odd {
-  background-color: #21375f;
+  background-color: #1c2f53;
 }
 
 table tr.even {
