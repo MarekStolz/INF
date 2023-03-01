@@ -7,7 +7,7 @@
     <meta name="author" content="Marek Štolz">
     <meta name="description" content="Information table for airport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link id="link-style" rel="stylesheet" href="../INF/CSS/stylesd.css" />
+    <link id="link-style" rel="stylesheet" href="../INF/CSS/styles.css?v=1" />
 </head>
 
 <body>
