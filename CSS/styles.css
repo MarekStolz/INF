@@ -14,8 +14,8 @@ body {
   overflow-x: hidden;
 }
 
-header{
-  font-family: 'Black Ops One', cursive;
+header {
+  font-family: 'Black Ops One';
   display: flex;
   justify-content: center;
   justify-content: flex;
@@ -23,6 +23,7 @@ header{
   padding-bottom: 5px;
   font-weight: bold;
 }
+
 .cas {
   padding-top: 1rem;
   font-size: 3rem;
@@ -49,29 +50,50 @@ table {
   overflow-y: auto;
 }
 
-table tr.odd {
+table tr {
   background-color: #1c2f53;
 }
 
-table tr.even {
+table tr:nth-of-type(2n+1) {
   background-color: #3f7ba3;
 }
 
 th {
   background-color: #3f7ba3;
 }
+
 @media only screen and (max-width: 768px) {
   header {
     font-size: 2rem;
   }
-  
+
   .cas {
     margin-left: 10%;
     font-size: 1.5rem;
   }
-  
+
   table {
     font-size: 1.5rem;
     height: calc(100% - 6.5rem);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  header {
+    font-size: 7rem;
+  }
+
+  .cas {
+    margin-left: 5%;
+    font-size: 4rem;
+  }
+
+  td,
+  th {
+    font-size: 4rem;
+  }
+
+  table {
+    font-size: 6rem;
   }
 }

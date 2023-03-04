@@ -1,24 +1,19 @@
 <?php
-require 'login.php';
+require 'api.php';
 
-$q = "SELECT * FROM flight WHERE from_dttm > '$current_time' ORDER BY from_dttm LIMIT 10";
-$result = mysqli_query($con, $q);
+$json = file_get_contents('../JSON/flights.json');
+$data = json_decode($json, true);
 
 echo '<table>' . PHP_EOL;
-echo '<th>FLIGHT</th>
+echo '<tr><th>FLIGHT</th>
 <th>TO</th>
 <th>DEPARTURE</th>
 <th>GATE</th>
-<th>STATUS</th>'
+<th>STATUS</th></tr>'
 . PHP_EOL;
 
-$row_count = 0; 
-$previous_date = null;
-while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
-    $row_count++;
-   
-    $row_class = $row_count % 2 == 0 ? 'even' : 'odd';
-    
+foreach ($data as $airport) {     
+       
     $status_color = '';
     switch($airport['status']) {
         case 'CANCELED':
@@ -31,11 +26,11 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
             $status_color = 'white';
     }
     
-    // Check if the date has changed
+    $previous_date = 0;
     if ($airport['from_dttm'] !== $previous_date) {
         $previous_date = $airport['from_dttm'];
         
-        // Check if delayed and add delay to the date
+        
         if ($airport['ifdelayed'] != 0) {
             $delay_in_minutes = $airport['ifdelayed'];
             $delay_in_seconds = $delay_in_minutes * 60;
@@ -50,8 +45,8 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
 
     $from_dttm_color = $status_color == 'orange' ? 'orange' : 'white';
 
-    echo '<tr class="' . $row_class . '"><td>' . $airport['code'] .
-        '</td></td><td>' . $airport['destination'] .
+    echo '<tr><td>' . $airport['code'] .
+        '</td><td>' . $airport['destination'] .
         '</td><td style="color: ' . $from_dttm_color . ';">' . date('H:i', strtotime($from_dttm)) .
         '</td><td>' . $airport['gate_code'] .
         '</td><td style="color: ' . $status_color . ';">' . $airport['status'];
@@ -63,9 +58,7 @@ while (($airport = mysqli_fetch_array($result, MYSQLI_ASSOC)) !== null) {
     echo '</td></tr>' . PHP_EOL;
 }
 
-
-
-if ($row_count === 0) {
+if (empty($data)) {
     echo '<tr><td colspan="6">Žádné lety nejsou naplánovány v budoucnu.</td></tr>';
 }
 
