@@ -1,7 +1,7 @@
 <?php
 require 'api.php';
 
-$json = file_get_contents('../JSON/flights.json');
+$json = file_get_contents('../ JSON/flights.json');
 $data = json_decode($json, true);
 
 echo '<table>' . PHP_EOL;
