@@ -22,6 +22,9 @@ foreach ($data as $airport) {
         case 'DELAYED':
             $status_color = 'orange';
             break;
+        case 'DEPARTED':
+            $status_color = 'green';
+            break;
         default:
             $status_color = 'white';
     }
@@ -41,6 +44,10 @@ foreach ($data as $airport) {
         }
     } else {
         $from_dttm = '';
+    }
+
+    if ($airport['status'] == 'DEPARTED') {
+        $from_dttm = date('Y-m-d H:i:s', strtotime($from_dttm) + 300);
     }
 
     $from_dttm_color = $status_color == 'orange' ? 'orange' : 'white';

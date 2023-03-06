@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS flight (
   destination varchar(30) NOT NULL,
   from_dttm timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   gate_code varchar(3) NOT NULL,
-  status ENUM('OK', 'CANCELED', 'DELAYED') NOT NULL DEFAULT 'OK',
+  status ENUM('OK', 'CANCELED', 'DELAYED', 'DEPARTED') NOT NULL DEFAULT 'OK',
   ifdelayed int NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;

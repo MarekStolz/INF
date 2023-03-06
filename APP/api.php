@@ -1,7 +1,7 @@
 <?php
 require 'login.php';
 
-$q = "SELECT * FROM flight WHERE from_dttm > NOW() ORDER BY from_dttm LIMIT 10";
+$q = "SELECT * FROM flight WHERE from_dttm > NOW() ORDER BY from_dttm LIMIT 8";
 $result = mysqli_query($con, $q);
 
 $data = array();
