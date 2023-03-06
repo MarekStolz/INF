@@ -16,14 +16,14 @@
         <div class="nadpis">AIRPORT</div>
         <div id="cas" class="cas"></div>
     </header>
+    
     <script src="../INF/SCRIPT/refresh.js"></script>
     <script src="../INF/SCRIPT/time.js"></script>
-    
+
     <div id="flight-table">
         <?php include '../INF/APP/table.php'; 
-    ?>
+      ?>
     </div>
-
 </body>
 
 </html>

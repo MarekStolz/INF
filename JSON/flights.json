@@ -5,8 +5,8 @@
         "destination": "USA",
         "from_dttm": "2023-04-11 10:11:00",
         "gate_code": "G2",
-        "status": "OK",
-        "ifdelayed": "0"
+        "status": "DELAYED",
+        "ifdelayed": "5"
     },
     {
         "id": "2",
@@ -32,7 +32,7 @@
         "destination": "USA",
         "from_dttm": "2023-04-18 16:30:00",
         "gate_code": "G3",
-        "status": "OK",
+        "status": "CANCELED",
         "ifdelayed": "0"
     },
     {
