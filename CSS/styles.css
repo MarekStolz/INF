@@ -46,7 +46,7 @@ table {
   padding-bottom: 500px;
   height: 50vmin;
   max-height: 90vh;
-  min-height: 88vh;
+  min-height: 89vh;
   overflow-y: auto;
 }
 
@@ -61,39 +61,12 @@ table tr:nth-of-type(2n+1) {
 th {
   background-color: #3f7ba3;
 }
-
-@media only screen and (max-width: 768px) {
-  header {
-    font-size: 2rem;
-  }
-
-  .cas {
-    margin-left: 10%;
-    font-size: 1.5rem;
-  }
-
-  table {
-    font-size: 1.5rem;
-    height: calc(100% - 6.5rem);
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  header {
-    font-size: 7rem;
-  }
-
-  .cas {
-    margin-left: 5%;
-    font-size: 4rem;
-  }
-
+@media only screen and (min-width: 2000px) {
   td,
   th {
-    font-size: 4rem;
-  }
-
-  table {
     font-size: 6rem;
+  }
+  .cas {
+    font-size: 5rem;
   }
 }
